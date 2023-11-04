@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <title>Image Management</title>
+</head>
+
+<body>
+    <h1>Image Management</h1>
+
+    <!-- Image Upload Form -->
+    <h2>Upload an Image</h2>
+    <form method="POST" action="/upload_image" enctype="multipart/form-data">
+        <label for="images">Select an image:</label>
+        <input type="file" name="images" accept="image/*">
+        <br>
+        <label for="texts">Optional text:</label>
+        <input type="text" name="texts">
+        <br>
+        <input type="submit" value="Upload">
+    </form>
+
+    <hr>
+
+    <!-- Image Deletion Form -->
+    <h2>Delete an Image</h2>
+    <form method="POST" action="/delete_image">
+        <label for="id">Enter the ID of the image to delete:</label>
+        <input type="text" name="id">
+        <br>
+        <input type="submit" value="Delete">
+    </form>
+
+    <hr>
+
+    <!-- Button to List Images -->
+    <h2>List Images</h2>
+    <form method="GET" action="/list_images">
+        <input type="submit" value="List Images">
+    </form>
+
+    <!-- Table to display all data -->
+    <h2>All Data</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Data</th>
+        </tr>
+        {% for data_row in all_data %}
+        <tr>
+            <td>{{ data_row[0] }}</td>
+            <td>{{ data_row[1] }}</td>
+            <td>{{ data_row[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
